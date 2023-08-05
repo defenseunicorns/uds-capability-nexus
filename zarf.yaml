@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/defenseunicorns/zarf/main/zarf.schema.json
+kind: ZarfPackageConfig
+metadata:
+  name: nexus
+  description: "UDS nexus capability deployed via flux"
+  version: "0.0.1"
+  architecture: amd64
+
+variables:
+  - name: NEXUS_DEPENDS_ON
+    default: "[]"
+  - name: NEXUS_CREATE_NAMESPACE
+    default: "true"
+
+components:
+  - name: nexus-values
+    required: true
+    files:
+      - source: values-nexus.yaml
+        target: values-nexus.yaml
+  - name: nexus
+    required: true
+    description: "Deploy nexus via flux"
+    actions:
+      onDeploy:
+        before:
+          - cmd: cat values-nexus.yaml
+            description: Read nexus values into variable.
+            mute: true
+            setVariables:
+            - name: NEXUS_VALUES
+              autoIndent: true
+              sensitive: true
+    charts:
+    # renovate: datasource=helm
+      - name: flux-app
+        url: https://defenseunicorns.github.io/uds-support-charts/
+        version: 1.0.5
+        namespace: nexus
+        valuesFiles:
+          - nexus-flux-values.yaml
+    repos:
+      - https://repo1.dso.mil/big-bang/product/packages/nexus.git
+    images:
+      - "registry1.dso.mil/ironbank/redhat/ubi/ubi8-minimal:8.8"
+      - "registry1.dso.mil/ironbank/sonatype/nexus/nexus:3.53.1-02"
