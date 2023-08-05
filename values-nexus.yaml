@@ -1,5 +1,5 @@
-domain: nexus.bigbang.dev
-hostname: nexus.bigbang.dev
+domain: bigbang.dev
+hostname: nexus
 istio:
   enabled: true
   injection: enabled
