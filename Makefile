@@ -164,7 +164,7 @@ build/dubbd-k3d: | build/zarf ## Download dubbd k3d oci package
 	cd build && ./zarf package pull oci://ghcr.io/defenseunicorns/packages/dubbd-k3d:$(DUBBD_K3D_VERSION)-amd64 --oci-concurrency 12
 
 build/uds-capability-nexus: | build ## Build the nexus capability
-	cd build && ./zarf package create . --skip-sbom --confirm --output-directory build
+	cd build && ./zarf package create ../ --skip-sbom --confirm
 
 ########################################################################
 # Deploy Section
