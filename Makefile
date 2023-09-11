@@ -124,7 +124,7 @@ cluster/create: ## Create a k3d cluster with metallb installed
 	echo "Waiting for Calico to be ready..."
 	kubectl rollout status deployment/calico-kube-controllers -n kube-system --watch --timeout=90s 2>&1 >/dev/null
 	kubectl rollout status daemonset/calico-node -n kube-system --watch --timeout=90s 2>&1 >/dev/null
-	kubectl wait --for=condition=Ready pods --all --all-namespaces 2>&1 >/dev/null
+	kubectl wait --for=condition=Ready pods --all --all-namespaces --timeout=90s 2>&1 >/dev/null
 	echo
 	utils/metallb/install.sh
 	echo "Cluster is ready!"
