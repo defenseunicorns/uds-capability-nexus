@@ -13,29 +13,21 @@ variables:
     default: "true"
 
 components:
-  - name: nexus-values
+  - name: istio-version
     required: true
-    files:
-      - source: values-nexus.yaml
-        target: values-nexus.yaml
-  - name: nexus
-    required: true
-    description: "Deploy nexus via flux"
     actions:
       onDeploy:
         before:
-          - cmd: cat values-nexus.yaml
-            description: Read nexus values into variable.
-            mute: true
-            setVariables:
-            - name: NEXUS_VALUES
-              autoIndent: true
-              sensitive: true
+          - cmd: kubectl get deployment -n monitoring monitoring-monitoring-kube-operator -o=jsonpath='{.spec.template.metadata.annotations.bigbang\.dev/istioVersion}'
+            setVariable: ISTIO_VERSION
+  - name: nexus
+    required: true
+    description: "Deploy nexus via flux"
     charts:
     # renovate: datasource=helm
       - name: flux-app
         url: https://defenseunicorns.github.io/uds-support-charts/
-        version: 1.0.5
+        version: 1.0.7
         namespace: nexus
         valuesFiles:
           - nexus-flux-values.yaml
