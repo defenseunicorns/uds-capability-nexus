@@ -136,7 +136,7 @@ cluster/destroy: ## Destroy the k3d cluster
 # Build Section
 ########################################################################
 
-build/all: build build/zarf build/zarf-init.sha256 build/dubbd-pull-k3d.sha256 build/uds-capability-nexus ##
+build/all: build build/zarf build/zarf-init build/dubbd-k3d build/uds-capability-nexus ##
 
 build: ## Create build directory
 	mkdir -p build
