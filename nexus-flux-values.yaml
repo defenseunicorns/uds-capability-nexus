@@ -48,6 +48,9 @@ application:
         app: null
         istio: null
 
+    # External database
+    custom_admin_password: ###ZARF_VAR_POSTGRES_DB_PASSWORD###
+
     nexus:
       imagePullSecrets:
         - name: private-registry
@@ -59,7 +62,7 @@ application:
           nexus.datastore.enabled: true
       env:
         - name: NEXUS_DATASTORE_NEXUS_JDBCURL
-          value: jdbc:postgresql://nexusXXXXXX-postgres.nexus.svc.cluster.local:5432/nexusdb
+          value: jdbc:postgresql://nexus-postgres.nexus.svc.cluster.local:5432/nexusdb
         - name: NEXUS_DATASTORE_NEXUS_USERNAME
           value: nexus
         # TODO I'm not sure how to handle this password. Can't reference a secret in this chart.
