@@ -52,6 +52,6 @@ application:
       imagePullSecrets:
         - name: private-registry
       podAnnotations:
-        bigbang.dev/istioVersion: 1.18.1-enterprise
+        bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
 
     license_key: ###ZARF_VAR_NEXUS_LICENSE_KEY###
