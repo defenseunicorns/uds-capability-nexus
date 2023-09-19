@@ -10,7 +10,7 @@ application:
   dependsOn:
     ###ZARF_VAR_NEXUS_DEPENDS_ON###
   baseValues:
-    domain: bigbang.dev
+    domain: ###ZARF_VAR_DOMAIN###
     hostname: nexus
     istio:
       enabled: true
@@ -54,5 +54,4 @@ application:
       podAnnotations:
         bigbang.dev/istioVersion: 1.18.1-enterprise
 
-    license_key: ""
-
+    license_key: ###ZARF_VAR_NEXUS_LICENSE_KEY###
