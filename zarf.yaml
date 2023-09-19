@@ -40,3 +40,14 @@ components:
     images:
       - "registry1.dso.mil/ironbank/redhat/ubi/ubi8-minimal:8.8"
       - "registry1.dso.mil/ironbank/sonatype/nexus/nexus:3.53.1-02"
+    actions:
+      onDeploy:
+        after:
+          - wait:
+              cluster:
+                kind: helmRelease
+                name: nexus
+                condition: Ready
+                namespace: bigbang
+            maxTotalSeconds: 900
+            description: Nexus HelmRelease to be Ready
