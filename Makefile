@@ -136,7 +136,7 @@ cluster/destroy: ## Destroy the k3d cluster
 # Build Section
 ########################################################################
 
-build/all: build build/zarf build/zarf-init build/dubbd-k3d build/uds-capability-nexus ##
+build/all: build build/zarf build/zarf-init build/dubbd-k3d build/test-pkg-deps build/uds-capability-nexus ##
 
 build: ## Create build directory
 	mkdir -p build
@@ -163,6 +163,10 @@ build/dubbd-k3d: | build/zarf ## Download dubbd k3d oci package
 	if [ -f build/zarf-package-dubbd-k3d-amd64-$(DUBBD_K3D_VERSION).tar.zst ] ; then exit 0; fi && \
 	cd build && ./zarf package pull oci://ghcr.io/defenseunicorns/packages/dubbd-k3d:$(DUBBD_K3D_VERSION)-amd64 --oci-concurrency 12
 
+build/test-pkg-deps: | build/zarf ## Build package dependencies for testing
+	cd build && ./zarf package create ../utils/pkg-deps/namespaces/ --skip-sbom --confirm
+	cd build && ./zarf package create ../utils/pkg-deps/nexus/postgres/ --skip-sbom --confirm
+
 build/uds-capability-nexus: | build ## Build the nexus capability
 	cd build && ./zarf package create ../ --skip-sbom --confirm
 
@@ -170,7 +174,7 @@ build/uds-capability-nexus: | build ## Build the nexus capability
 # Deploy Section
 ########################################################################
 
-deploy/all: deploy/init deploy/dubbd-k3d deploy/uds-capability-nexus ##
+deploy/all: deploy/init deploy/dubbd-k3d deploy/test-pkg-deps deploy/uds-capability-nexus ##
 
 deploy/init: | build/zarf ## Deploy the zarf init package
 	cd build && ./zarf init --confirm --components=git-server
@@ -178,8 +182,12 @@ deploy/init: | build/zarf ## Deploy the zarf init package
 deploy/dubbd-k3d: | build/zarf ## Deploy the k3d flavor of DUBBD
 	cd build && ./zarf package deploy zarf-package-dubbd-k3d-amd64-$(DUBBD_K3D_VERSION).tar.zst --confirm
 
+deploy/test-pkg-deps: | build/zarf ## Deploy the package dependencies needed for testing the nexus capability
+	cd build && ./zarf package deploy zarf-package-nexus-namespaces-* --confirm
+	cd build && ./zarf package deploy zarf-package-nexus-postgres* --confirm
+
 deploy/uds-capability-nexus: ## Deploy the nexus capability
-	cd build && ./zarf package deploy zarf-package-nexus-*.tar.zst --confirm
+	cd build && ./zarf package deploy zarf-package-nexus-amd64-*.tar.zst --confirm
 
 ########################################################################
 # Macro Section

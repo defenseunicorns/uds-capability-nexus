@@ -1,0 +1,3 @@
+auth:
+  username: nexus
+  database: nexusdb

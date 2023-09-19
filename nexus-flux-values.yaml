@@ -53,5 +53,17 @@ application:
         - name: private-registry
       podAnnotations:
         bigbang.dev/istioVersion: ###ZARF_VAR_ISTIO_VERSION###
+      properties:
+        override: true
+        data:
+          nexus.datastore.enabled: true
+      env:
+        - name: NEXUS_DATASTORE_NEXUS_JDBCURL
+          value: jdbc:postgresql://nexusXXXXXX-postgres.nexus.svc.cluster.local:5432/nexusdb
+        - name: NEXUS_DATASTORE_NEXUS_USERNAME
+          value: nexus
+        # TODO I'm not sure how to handle this password. Can't reference a secret in this chart.
+        - name: NEXUS_DATASTORE_NEXUS_PASSWORD
+          value: ###ZARF_VAR_POSTGRES_DB_PASSWORD###
 
     license_key: ###ZARF_VAR_NEXUS_LICENSE_KEY###

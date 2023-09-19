@@ -1,0 +1,7 @@
+namespaces:
+  - name: nexus
+    labels:
+      istio-injection: enabled
+  - name: nexus-db
+    labels:
+      istio-injection: enabled
