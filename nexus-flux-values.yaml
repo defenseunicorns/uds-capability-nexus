@@ -59,7 +59,7 @@ application:
       properties:
         override: true
         data:
-          nexus.datastore.enabled: true
+          nexus.datastore.enabled: ###ZARF_VAR_DATASTORE_ENABLED###
       env:
         - name: NEXUS_DATASTORE_NEXUS_JDBCURL
           value: jdbc:postgresql://nexus-postgres.nexus.svc.cluster.local:5432/nexusdb
