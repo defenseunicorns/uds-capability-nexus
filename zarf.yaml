@@ -13,8 +13,6 @@ variables:
     default: "false"
   - name: DOMAIN
     default: "bigbang.dev"
-  - name: DATASTORE_ENABLED
-    default: "true"
   - name: NEXUS_LICENSE_KEY
     default: ""
 
