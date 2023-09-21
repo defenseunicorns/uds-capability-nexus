@@ -187,6 +187,7 @@ deploy/test-pkg-deps: | build/zarf ## Deploy the package dependencies needed for
 	cd build && ./zarf package deploy zarf-package-nexus-postgres* --confirm
 
 deploy/uds-capability-nexus: ## Deploy the nexus capability
+	cp zarf-config.yaml build/
 	cd build && ./zarf package deploy zarf-package-nexus-amd64-*.tar.zst --confirm
 
 ########################################################################

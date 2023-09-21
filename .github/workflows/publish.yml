@@ -47,6 +47,15 @@ jobs:
           username: ${{ secrets.REGISTRY1_USERNAME }}
           password: ${{ secrets.REGISTRY1_PASSWORD }}
 
+      ####
+      # Build and publish dependency packages to use in a dev UDS Bundle
+      ####
+      - name: Build and publish dev-dependency nexus-postgres package
+        run: cd utils/pkg-deps/nexus/postgres && zarf package create --confirm --no-progress --output oci://ghcr.io/defenseunicorns/uds-capability/nexus/dev-dependency
+
+      ####
+      # Build and publish capability package and skeleton
+      ####
       - name: Build nexus package
         run: zarf package create --confirm --no-progress
 

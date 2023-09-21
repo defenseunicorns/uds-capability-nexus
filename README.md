@@ -1,13 +1,35 @@
 # uds-capability-nexus
-Platform One Nexus Repository Manager deployed via flux
+Bigbang [Nexus Repository Manager](https://repo1.dso.mil/big-bang/product/packages/nexus) deployed via flux by zarf
 
-## Pre-req
+## Deployment Prerequisites
+
+### Resources
 - Minimum compute requirements for single node deployment are at LEAST 64 GB RAM and 32 virtual CPU threads (aws `m6i.8xlarge` instance type should do)
 - k3d installed on machine
 
+#### General
+
+- Create `nexus` namespace
+- Label `nexus` namespace with `istio-injection: enabled`
+
+#### Database
+
+- A Postgres database is running on port `5432` and accessible to the cluster
+- This database can be logged into via the username `nexus`
+- The `nexus` user has read/write access to the above mentioned database
+- This database instance has a psql database created named `nexusdb`
+- Create `nexus-postgres` service in `nexus` namespace that points to the psql database
+- Create `nexus-postgres` secret in `nexus` namespace with the key `password` that contains the password to the `nexus` user for the psql database
+
+#### Pro License
+- You must provide a valid Nexus license to use the external DB configuration. If a license is not provided Nexus will default to the OSS version and will use an internal H2 DB.
+- Provide your license via the Zarf deploy time variable `nexus_license_key`.
+- You can update the [zarf-config.yaml](zarf-config.yaml) in this project. The Makefile will copy that to the build directory to use at deploy time.
+- In production, set the `nexus_license_key` in a way that is appropriate for your deployment.
+
 ## Deploy
 
-### Use zarf to login to the needed registries i.e. registry1.dso.mil and ghcr.io
+### Use zarf to login to the needed registries i.e. registry1.dso.mil
 
 ```bash
 # Download Zarf
@@ -21,34 +43,30 @@ export REGISTRY1_USERNAME="YOUR-USERNAME-HERE"
 export REGISTRY1_TOKEN="YOUR-TOKEN-HERE"
 echo $REGISTRY1_TOKEN | build/zarf tools registry login registry1.dso.mil --username $REGISTRY1_USERNAME --password-stdin
 
-# ghcr.io (To access oci packages needed)
-export GH_USERNAME="YOUR-USERNAME-HERE"
-export GH_TOKEN="YOUR-TOKEN-HERE"
-echo $GH_TOKEN | build/zarf tools registry login ghcr.io --username $GH_USERNAME --password-stdin
-
 set -o history
 ```
 
-### Deploy Everything
+### Build and Deploy Everything via Makefile and local package
 
 ```bash
-# This will destroy and create a compatible k3d cluster then it will run make build/all and make deploy/all. Follow the breadcrumbs in the Makefile to see what and how its doing it.
-make cluster/full
+# This will run make build/all, make cluster/reset, and make deploy/all. Follow the breadcrumbs in the Makefile to see what and how its doing it.
+make all
 ```
 
-## Import Zarf Skeleton
-Below is an example of how to import this projects zarf skeleton into your zarf.yaml. The [uds-package-sofware-factory](https://github.com/defenseunicorns/uds-package-software-factory.git) does this with a subset of the uds-capability projects.
+## Declare This Package In Your UDS Bundle
+Below is an example of how to use this projects zarf package in your UDS Bundle
 
 ```yaml
-components:
-  - name: values
-    required: true
-    files:
-      - source: <path-to-the-values-you-want-to-use>
-        target: values-nexus.yaml
+kind: UDSBundle
+metadata:
+  name: example-bundle
+  description: An Example UDS Bundle
+  version: 0.0.1
+  architecture: amd64
+
+zarf-packages:
+  # Nexus
   - name: nexus
-    required: true
-    import:
-      name: nexus
-      url: oci://ghcr.io/defenseunicorns/uds-capability/nexus:0.0.1-skeleton
+    repository: ghcr.io/defenseunicorns/uds-capability/nexus
+    ref: 0.0.1
 ```

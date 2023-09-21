@@ -24,13 +24,12 @@ components:
         before:
           - cmd: kubectl get deployment -n monitoring monitoring-monitoring-kube-operator -o=jsonpath='{.spec.template.metadata.annotations.bigbang\.dev/istioVersion}'
             setVariable: ISTIO_VERSION
-  # TODO not sure how to handle this
   - name: postgres-secret
     required: true
     actions:
       onDeploy:
         before:
-          - cmd: kubectl get secret -n nexus-db postgresql --template={{.data.password}} | base64 -d
+          - cmd: kubectl get secret -n nexus nexus-postgres --template={{.data.password}} | base64 -d
             mute: true
             setVariables:
               - name: POSTGRES_DB_PASSWORD

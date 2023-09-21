@@ -2,7 +2,7 @@
 kind: ZarfPackageConfig
 metadata:
   name: nexus-postgres
-  version: "0.0.2"
+  version: "0.0.1"
   architecture: amd64
 
 components:
@@ -56,3 +56,9 @@ components:
       - name: service for nexus
         files:
           - service.yaml
+  - name: postgres-netpol
+    required: true
+    manifests:
+      - name: nexus to nexus-db egress netpol
+        files:
+          - netpol.yaml
