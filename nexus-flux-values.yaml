@@ -45,8 +45,7 @@ application:
     networkPolicies:
       enabled: true
       ingressLabels:
-        app: null
-        istio: null
+        app: tenant-ingressgateway
 
     # External database
     custom_admin_password: ###ZARF_VAR_POSTGRES_DB_PASSWORD###
