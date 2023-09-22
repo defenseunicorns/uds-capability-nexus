@@ -68,5 +68,5 @@ zarf-packages:
   # Nexus
   - name: nexus
     repository: ghcr.io/defenseunicorns/uds-capability/nexus
-    ref: 0.0.1
+    ref: 0.0.2
 ```
