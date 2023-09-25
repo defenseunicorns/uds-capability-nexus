@@ -1,0 +1,6 @@
+package:
+  deploy:
+    set:
+      # If configuring nexus pro, run the below command and populate nexus_license_key with the output
+      # cat <your-sonatype-license-file>.lic | base64
+      nexus_license_key: ""
