@@ -3,7 +3,7 @@ kind: ZarfPackageConfig
 metadata:
   name: nexus
   description: "UDS nexus capability deployed via flux"
-  version: "0.0.2"
+  version: "0.0.3"
   architecture: amd64
 
 variables:
@@ -46,7 +46,7 @@ components:
         valuesFiles:
           - nexus-flux-values.yaml
     repos:
-      - https://repo1.dso.mil/big-bang/product/packages/nexus.git
+      - https://repo1.dso.mil/big-bang/product/packages/nexus.git@53.1.0-bb.3
     images:
       - "registry1.dso.mil/ironbank/redhat/ubi/ubi8-minimal:8.8"
       - "registry1.dso.mil/ironbank/sonatype/nexus/nexus:3.53.1-02"
