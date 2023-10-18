@@ -6,7 +6,7 @@ application:
   repository: https://repo1.dso.mil/big-bang/product/packages/nexus.git
   ref:
     # renovate: datasource=gitlab-tags depName=big-bang/product/packages/nexus versioning=loose registryUrl=https://repo1.dso.mil
-    tag: 53.1.0-bb.1
+    tag: "53.1.0-bb.3"
   dependsOn:
     ###ZARF_VAR_NEXUS_DEPENDS_ON###
   baseValues:
