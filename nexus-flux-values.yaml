@@ -61,9 +61,9 @@ application:
           nexus.datastore.enabled: true
       env:
         - name: NEXUS_DATASTORE_NEXUS_JDBCURL
-          value: jdbc:postgresql://nexus-postgres.nexus.svc.cluster.local:5432/nexusdb
+          value: jdbc:postgresql://nexus-postgres.nexus.svc.cluster.local:5432/###ZARF_VAR_NEXUS_DB_NAME###
         - name: NEXUS_DATASTORE_NEXUS_USERNAME
-          value: nexus
+          value: ###ZARF_VAR_NEXUS_DB_USERNAME###
         - name: NEXUS_DATASTORE_NEXUS_PASSWORD
           value: ###ZARF_VAR_POSTGRES_DB_PASSWORD###
 
