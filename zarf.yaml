@@ -3,7 +3,7 @@ kind: ZarfPackageConfig
 metadata:
   name: nexus
   description: "UDS nexus capability deployed via flux"
-  version: "0.0.3"
+  version: "0.0.4"
   architecture: amd64
 
 variables:
@@ -11,6 +11,10 @@ variables:
     default: "[]"
   - name: NEXUS_CREATE_NAMESPACE
     default: "false"
+  - name: NEXUS_DB_NAME
+    default: nexusdb
+  - name: NEXUS_DB_USERNAME
+    default: nexus
   - name: DOMAIN
     default: "bigbang.dev"
   - name: NEXUS_LICENSE_KEY
