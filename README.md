@@ -15,11 +15,11 @@ Bigbang [Nexus Repository Manager](https://repo1.dso.mil/big-bang/product/packag
 #### Database
 
 - A Postgres database is running on port `5432` and accessible to the cluster
-- This database can be logged into via the username `nexus`
-- The `nexus` user has read/write access to the above mentioned database
-- This database instance has a psql database created named `nexusdb`
+- This database can be logged into via the username configured with `ZARF_VAR_NEXUS_DB_USERNAME`. The default is `nexus`.
+- The database user has read/write access to the above mentioned database
+- This database instance has a psql database created matching the configuration of `ZARF_VAR_NEXUS_DB_NAME`. The default is `nexusdb`.
 - Create `nexus-postgres` service in `nexus` namespace that points to the psql database
-- Create `nexus-postgres` secret in `nexus` namespace with the key `password` that contains the password to the `nexus` user for the psql database
+- Create `nexus-postgres` secret in `nexus` namespace with the key `password` that contains the password to for the configured user of the psql database
 
 #### Pro License
 - You must provide a valid Nexus license to use the external DB configuration. If a license is not provided Nexus will default to the OSS version and will use an internal H2 DB.
