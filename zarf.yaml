@@ -3,7 +3,9 @@ kind: ZarfPackageConfig
 metadata:
   name: nexus
   description: "UDS nexus capability deployed via flux"
+  # x-release-please-start-version
   version: "0.0.4"
+  # x-release-please-end
   architecture: amd64
 
 variables:
