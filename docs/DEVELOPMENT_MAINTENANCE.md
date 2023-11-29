@@ -54,6 +54,7 @@ The most important prefixes you should have in mind are:
 When changes are merged to the `main` branch, the Release Please will evaluate all commits since the previous release to calculate what changes are included and will create another PR to increase the version and tag a new release (per the Release Please design [documentation](https://github.com/googleapis/release-please/blob/main/docs/design.md#lifecycle-of-a-release)). This will also automatically generate changelog entries based on these commits.
 
 > TIP: Merging a PR should be done via a branch **"Squash and merge"**; this means that the commit message seen on this PR merge is what Release Please will use to determine a version bump.
+
 When the auto generated Release Please PR is merged the following steps will automatically happen.
 1) A new release will be created and tagged
 1) An e2e test will be triggered
