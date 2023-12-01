@@ -73,6 +73,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      ####
+      # Build and publish packages
+      ####
+      - name: Build and publish dev-dependency nexus-postgres package
+        run: cd utils/pkg-deps/nexus/postgres && zarf package create --confirm --no-progress --output oci://ghcr.io/defenseunicorns/uds-capability/nexus/dev-dependency
+
       - name: Publish nexus package
         run: zarf package publish zarf-package-nexus-amd64-*.tar.zst oci://ghcr.io/defenseunicorns/uds-capability --no-progress
 
