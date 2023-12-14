@@ -52,10 +52,10 @@ components:
         valuesFiles:
           - nexus-flux-values.yaml
     repos:
-      - https://repo1.dso.mil/big-bang/product/packages/nexus.git@53.1.0-bb.3
+      - https://repo1.dso.mil/big-bang/product/packages/nexus.git@62.0.0-bb.1
     images:
-      - "registry1.dso.mil/ironbank/redhat/ubi/ubi8-minimal:8.8"
-      - "registry1.dso.mil/ironbank/sonatype/nexus/nexus:3.53.1-02"
+      - "registry1.dso.mil/ironbank/redhat/ubi/ubi8-minimal:8.9"
+      - "registry1.dso.mil/ironbank/sonatype/nexus/nexus:3.62.0-01"
     actions:
       onDeploy:
         after:
