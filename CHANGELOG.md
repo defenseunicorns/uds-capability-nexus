@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.2...v0.1.3) (2023-12-14)
+
+
+### Features
+
+* add initial oscal component ([#24](https://github.com/defenseunicorns/uds-capability-nexus/issues/24)) ([baaeaa8](https://github.com/defenseunicorns/uds-capability-nexus/commit/baaeaa841e035d4a6c0df3febb0a7009081e9587))
+
+
+### Miscellaneous
+
+* Update DUBBD and Zarf ([5e1c338](https://github.com/defenseunicorns/uds-capability-nexus/commit/5e1c33819c99c4b77659ef909cb9060ffb224027))
+* Update nexus to 62.0.0-bb.1 ([#26](https://github.com/defenseunicorns/uds-capability-nexus/issues/26)) ([5e1c338](https://github.com/defenseunicorns/uds-capability-nexus/commit/5e1c33819c99c4b77659ef909cb9060ffb224027))
+
 ## [0.1.2](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.1...v0.1.2) (2023-12-01)
 
 
