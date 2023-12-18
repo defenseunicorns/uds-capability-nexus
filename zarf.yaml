@@ -40,9 +40,9 @@ variables:
     default: "true"
   - name: NEXUS_SSO_IDP_VALIDATE_ASSERTION_SIGNATURE
     default: "true"
-  - name: NEXUS_SSO_IDP_IDP_METADATA
+  - name: NEXUS_SSO_IDP_METADATA
     default: ''
-  - name: NEXUS_SSO_IDP_IDP_METADATA
+  - name: NEXUS_SSO_REALM
     default: "[]"
     autoIndent: true
   - name: NEXUS_SSO_ROLE

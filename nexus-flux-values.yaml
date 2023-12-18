@@ -81,7 +81,7 @@ application:
         groupsAttribute: ###ZARF_VAR_NEXUS_SSO_IDP_GROUPS_ATTRIBUTE###
         validateResponseSignature: ###ZARF_VAR_NEXUS_SSO_IDP_VALIDATE_RESPONSE_SIGNATURE###
         validateAssertionSignature: ###ZARF_VAR_NEXUS_SSO_IDP_VALIDATE_ASSERTION_SIGNATURE###
-        idpMetadata: ###ZARF_VAR_NEXUS_SSO_IDP_IDP_METADATA###
+        idpMetadata: ###ZARF_VAR_NEXUS_SSO_IDP_METADATA###
       realm:
         ###ZARF_VAR_NEXUS_SSO_REALM###
       role:
