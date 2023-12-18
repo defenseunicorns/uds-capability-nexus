@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.3...v0.1.4) (2023-12-18)
+
+
+### Features
+
+* Expose SSO configuration ([#27](https://github.com/defenseunicorns/uds-capability-nexus/issues/27)) ([7800a3c](https://github.com/defenseunicorns/uds-capability-nexus/commit/7800a3c30cdcefc567d94f49ba9da500d281a2c0))
+
 ## [0.1.3](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.2...v0.1.3) (2023-12-14)
 
 
