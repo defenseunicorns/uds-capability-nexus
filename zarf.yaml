@@ -21,6 +21,34 @@ variables:
     default: "bigbang.dev"
   - name: NEXUS_LICENSE_KEY
     default: ""
+    autoIndent: true
+  - name: NEXUS_SSO_ENABLED
+    default: "false"
+  - name: NEXUS_SSO_IDP_ENTITY_ID
+    default: ""
+  - name: NEXUS_SSO_IDP_USERNAME_ATTRIBUTE
+    default: ""
+  - name: NEXUS_SSO_IDP_FIRSTNAME_ATTRIBUTE
+    default: ""
+  - name: NEXUS_SSO_IDP_LASTNAME_ATTRIBUTE
+    default: ""
+  - name: NEXUS_SSO_IDP_EMAIL_ATTRIBUTE
+    default: ""
+  - name: NEXUS_SSO_IDP_GROUPS_ATTRIBUTE
+    default: ""
+  - name: NEXUS_SSO_IDP_VALIDATE_RESPONSE_SIGNATURE
+    default: "true"
+  - name: NEXUS_SSO_IDP_VALIDATE_ASSERTION_SIGNATURE
+    default: "true"
+  - name: NEXUS_SSO_IDP_IDP_METADATA
+    default: ''
+  - name: NEXUS_SSO_IDP_IDP_METADATA
+    default: "[]"
+    autoIndent: true
+  - name: NEXUS_SSO_ROLE
+    default: "[]"
+    autoIndent: true
+
 
 components:
   - name: istio-version
