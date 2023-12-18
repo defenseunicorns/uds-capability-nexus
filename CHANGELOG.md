@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.5](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.4...v0.1.5) (2023-12-18)
+
+
+### Bug Fixes
+
+* Fix SSO Zarf Vars ([2bada61](https://github.com/defenseunicorns/uds-capability-nexus/commit/2bada6179407cccb1911a2dca311e9774e7133bc))
+
 ## [0.1.4](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.3...v0.1.4) (2023-12-18)
 
 
