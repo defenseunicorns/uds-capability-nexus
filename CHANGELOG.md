@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.6](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.5...v0.1.6) (2024-01-30)
+
+
+### Features
+
+* add initial lula lint action ([#31](https://github.com/defenseunicorns/uds-capability-nexus/issues/31)) ([2a78b5e](https://github.com/defenseunicorns/uds-capability-nexus/commit/2a78b5eb160d84b9359d55698deec1eaef1bda1d))
+
+
+### Miscellaneous
+
+* update nexus to 62.0.0-bb.2 ([9676c33](https://github.com/defenseunicorns/uds-capability-nexus/commit/9676c33a86e577e0819d14b52896d3170badbef2))
+* update zarf and dubbd ([#33](https://github.com/defenseunicorns/uds-capability-nexus/issues/33)) ([9676c33](https://github.com/defenseunicorns/uds-capability-nexus/commit/9676c33a86e577e0819d14b52896d3170badbef2))
+
 ## [0.1.5](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.4...v0.1.5) (2023-12-18)
 
 
