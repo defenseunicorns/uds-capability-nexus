@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.7](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.6...v0.1.7) (2024-02-02)
+
+
+### Miscellaneous
+
+* bump dubbd to 0.18.0 ([4bc3214](https://github.com/defenseunicorns/uds-capability-nexus/commit/4bc321437d970ce909a4a5bee16f655ee5a8dee6))
+* update nexus to 64.0.0-bb.0 ([#34](https://github.com/defenseunicorns/uds-capability-nexus/issues/34)) ([4bc3214](https://github.com/defenseunicorns/uds-capability-nexus/commit/4bc321437d970ce909a4a5bee16f655ee5a8dee6))
+
 ## [0.1.6](https://github.com/defenseunicorns/uds-capability-nexus/compare/v0.1.5...v0.1.6) (2024-01-30)
 
 
